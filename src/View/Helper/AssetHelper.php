@@ -10,11 +10,12 @@
  * @link        https://github.com/mirko-pagliai/cakephp-assets
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace Assets\View\Helper;
 
-use Assets\Utility\AssetsCreator;
+namespace JeffersonSimaoGoncalves\Assets\View\Helper;
+
 use Cake\Core\Configure;
 use Cake\View\Helper;
+use JeffersonSimaoGoncalves\Assets\Utility\AssetsCreator;
 
 /**
  * Asset Helper.
@@ -25,17 +26,32 @@ class AssetHelper extends Helper
 {
     /**
      * Helpers
+     *
      * @var array
      */
     public $helpers = ['Html'];
 
     /**
+     * Compresses and adds a css file to the layout
+     *
+     * @param string|array $path String or array of css files
+     * @param array $options Array of options and HTML attributes
+     * @return string Html, `<link>` or `<style>` tag
+     * @uses path()
+     */
+    public function css($path, array $options = [])
+    {
+        return $this->Html->css($this->path($path, 'css'), $options);
+    }
+
+    /**
      * Gets the asset path
+     *
      * @param string|array $path String or array of css/js files
      * @param string $type `css` or `js`
      * @return string Asset path
-     * @uses Assets\Utility\AssetsCreator::create()
-     * @uses Assets\Utility\AssetsCreator::path()
+     * @uses JeffersonSimaoGoncalves\Assets\Utility\AssetsCreator::create()
+     * @uses JeffersonSimaoGoncalves\Assets\Utility\AssetsCreator::path()
      */
     protected function path($path, $type)
     {
@@ -56,19 +72,8 @@ class AssetHelper extends Helper
     }
 
     /**
-     * Compresses and adds a css file to the layout
-     * @param string|array $path String or array of css files
-     * @param array $options Array of options and HTML attributes
-     * @return string Html, `<link>` or `<style>` tag
-     * @uses path()
-     */
-    public function css($path, array $options = [])
-    {
-        return $this->Html->css($this->path($path, 'css'), $options);
-    }
-
-    /**
      * Compresses and adds js files to the layout
+     *
      * @param string|array $url String or array of js files
      * @param array $options Array of options and HTML attributes
      * @return mixed String of `<script />` tags or null if `$inline` is

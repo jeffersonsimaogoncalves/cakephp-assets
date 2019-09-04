@@ -11,7 +11,8 @@
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  * @see         https://github.com/matthiasmullie/minify
  */
-namespace Assets\Utility;
+
+namespace JeffersonSimaoGoncalves\Assets\Utility;
 
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
@@ -26,24 +27,28 @@ class AssetsCreator
 {
     /**
      * Asset full path
+     *
      * @var string
      */
     protected $asset;
 
     /**
      * File paths that will be transformed into a single asset
+     *
      * @var array
      */
     protected $paths = [];
 
     /**
      * Asset type (`css` or `js`)
+     *
      * @var string
      */
     protected $type;
 
     /**
      * Construct. Sets the asset type and paths
+     *
      * @param string|array $paths String or array of css files
      * @param string $type Extension (`css` or `js`)
      * @throws \InvalidArgumentException
@@ -70,22 +75,8 @@ class AssetsCreator
     }
 
     /**
-     * Internal method to resolve the asset path
-     * @return string Asset full path
-     * @use $paths
-     * @use $type
-     */
-    protected function resolveAssetPath()
-    {
-        $basename = md5(serialize(array_map(function ($path) {
-            return [$path, filemtime($path)];
-        }, $this->paths)));
-
-        return Configure::read('Assets.target') . DS . $basename . '.' . $this->type;
-    }
-
-    /**
      * Internal method to resolve partial file paths and return full paths
+     *
      * @param string|array $paths Partial file paths
      * @return array Full file paths
      * @use $type
@@ -116,7 +107,24 @@ class AssetsCreator
     }
 
     /**
+     * Internal method to resolve the asset path
+     *
+     * @return string Asset full path
+     * @use $paths
+     * @use $type
+     */
+    protected function resolveAssetPath()
+    {
+        $basename = md5(serialize(array_map(function ($path) {
+            return [$path, filemtime($path)];
+        }, $this->paths)));
+
+        return Configure::read('Assets.target') . DS . $basename . '.' . $this->type;
+    }
+
+    /**
      * Creates the asset
+     *
      * @return string
      * @uses path()
      * @uses $paths
@@ -140,6 +148,7 @@ class AssetsCreator
 
     /**
      * Returns the asset full path
+     *
      * @return string Asset full path
      */
     public function path()

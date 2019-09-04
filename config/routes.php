@@ -11,11 +11,11 @@
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 
-use Assets\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
+use JeffersonSimaoGoncalves\Assets\Routing\Middleware\AssetMiddleware;
 
-Router::plugin('Assets', ['path' => '/assets'], function (RouteBuilder $routes) {
+Router::plugin('JeffersonSimaoGoncalves/Assets', ['path' => '/assets'], function (RouteBuilder $routes) {
     $routes->registerMiddleware('asset', new AssetMiddleware());
 
     $routes->get('/:filename', [])

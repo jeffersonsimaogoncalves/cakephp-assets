@@ -11,10 +11,11 @@
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  * @since       1.3.0
  */
-namespace Assets\Routing\Middleware;
 
-use Assets\Http\Exception\AssetNotFoundException;
+namespace JeffersonSimaoGoncalves\Assets\Routing\Middleware;
+
 use Cake\Core\Configure;
+use JeffersonSimaoGoncalves\Assets\Http\Exception\AssetNotFoundException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -25,6 +26,7 @@ class AssetMiddleware
 {
     /**
      * Serves assets if the request matches one
+     *
      * @param \Psr\Http\Message\ServerRequestInterface $request The request
      * @param \Psr\Http\Message\SResponseInterface $response The response
      * @param callable $next Callback to invoke the next middleware
