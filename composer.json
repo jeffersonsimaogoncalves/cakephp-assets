@@ -17,7 +17,7 @@
   "require": {
     "php": ">=5.5.9",
     "cakephp/cakephp": "^3.7",
-    "jeffersonsimaogoncalves/php-tools": "^1.2",
+    "jeffersonsimaogoncalves/php-tools": "^1.3",
     "matthiasmullie/minify": "^1.3"
   },
   "require-dev": {
